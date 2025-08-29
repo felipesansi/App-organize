@@ -6,7 +6,7 @@ import {
   Modal,
   Alert,
   StyleSheet,
-  FlatList,
+  FlatList, Linking,
 } from 'react-native';
 import { router } from 'expo-router';
 import { supabase } from '../../lib/supabase';
@@ -45,7 +45,7 @@ export async function SalvarTarefa(
 }
 
 export default function Perfil() {
-  const { setUser, user } = useAuth();
+  const { setUser, user } = useAuth(); 
   const [menuVisible, setMenuVisible] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
   const [editando, setEditando] = useState(false);
@@ -233,6 +233,16 @@ export default function Perfil() {
           <View style={styles.dropdownMenu}>
             <TouchableOpacity onPress={EncerrarSessao} style={styles.menuItem}>
               <Text style={styles.menuTexto}>Encerrar Sessão</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL('https://portfolio-react-omega-rust.vercel.app/');
+                setMenuVisible(false);
+              }}
+              style={styles.menuItem}
+            >
+            
+              <Text style={styles.menuTexto}>Visitar site do dev</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
