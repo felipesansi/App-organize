@@ -21,7 +21,6 @@ O projeto é dividido em pastas e arquivos que organizam suas funcionalidades pr
 ```
 
 
-```bash
 ├── assets/              # Recursos estáticos (imagens, ícones, fontes, etc.)
 ├── src/                 # Código-fonte principal (componentes, telas e lógica)
 ├── .gitignore
@@ -32,7 +31,7 @@ O projeto é dividido em pastas e arquivos que organizam suas funcionalidades pr
 ├── package-lock.json
 └── tsconfig.json        # Configuração do TypeScript (se aplicável)
 
-
+```
 
 ## Figma do Projeto
 
