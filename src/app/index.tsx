@@ -30,7 +30,7 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-   <Text style = {styles.logo}>App<Text style = {{color:colors.white}}>Organize</Text></Text>
+   <Text style = {styles.logo}>App<Text style = {{color:colors.white}}> organize</Text></Text>
 
     </View>
   );

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import{View,Text, StyleSheet, TextInput, Pressable,ScrollView,Alert} from 'react-native';
 import { Link} from 'expo-router';
 import { router } from 'expo-router';
+import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase'; 
 
 
@@ -11,7 +12,28 @@ export default function Login(){
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
     const [loding, setLoading] = useState(false);
-       
+    const { setUser, user } = useAuth(); 
+    const [tarefas, setTarefas] = useState<Array<any>>([]);
+    
+    
+    
+    
+    async function carregarTarefas() {
+    if (!user) return;
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('tarefas')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('data_inicio', { ascending: true });
+
+    if (error) {
+      Alert.alert('Erro ao carregar tarefas', error.message);
+    } else {
+      setTarefas(data || []);
+    }
+    setLoading(false);
+  }
     
 async function Entrar() {
      setLoading(true);
@@ -23,14 +45,16 @@ async function Entrar() {
 
   setLoading(false);
 
+
   if (error) {
-    Alert.alert('Erro ao entrar', error.message);
+    Alert.alert('Erro ao entrar', "verifique suas credenciais");
     return;
   }
 
   if (data.user) {
-    
+    setUser(data.user); 
     router.replace('/(painel)/perfil/page');
+    carregarTarefas();
     setLoading(false);
   }
 }
@@ -40,14 +64,15 @@ async function Entrar() {
     return(
         <View style={styles.container}> 
            <View style={styles.header}>
-            <Text style = {styles.logo}>App<Text style = {{color:colors.white}}>Organize</Text></Text>
+            <Text style = {styles.logo}>App<Text style = {{color:colors.white}}> organize</Text></Text>
             <Text style = {styles.slogan}>Organize seu dia com o melhor App </Text>
         </View>
      
         <View style = {styles.form}>
 
              <Text style={styles.label}>email:</Text>
-             <TextInput placeholder='Digite seu e-mail' style = {styles.input}
+             <TextInput placeholder='Digite seu e-mail' placeholderTextColor={colors.grayStrong}
+              style = {styles.input}
                 value={email}
                 onChangeText={setEmail}
                 keyboardType='email-address' 
@@ -56,7 +81,7 @@ async function Entrar() {
 
 
              <Text style ={styles.label}>senha:</Text>
-             <TextInput placeholder='Digite sua senha' 
+             <TextInput placeholder='Digite sua senha' placeholderTextColor={colors.grayStrong}
              style = {styles.input}
                 value={password}
                 onChangeText={setPassword}
@@ -124,6 +149,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         marginBottom: 20,
         padding : 10,
+        color: colors.black,
+        fontSize: 18,
     },
     button: {
         backgroundColor: colors.green,

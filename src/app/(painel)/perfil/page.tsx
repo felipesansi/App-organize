@@ -56,6 +56,8 @@ export default function Perfil() {
 
   const [tarefas, setTarefas] = useState<Array<any>>([]);
   const [loading, setLoading] = useState(false);
+  const [nomeUsuario, setNomeUsuario] = useState(user?.user_metadata.name || 'Usuário');
+  const [emailUsuario, setEmailUsuario] = useState(user?.email || 'email não disponível');
 
   async function EncerrarSessao() {
     setMenuVisible(false);
@@ -144,7 +146,8 @@ export default function Perfil() {
   }
 
   async function marcarComoConcluida(id: number) {
-    const dataConclusao = new Date().toISOString().split('T')[0];
+    const dataConclusao = new Date().toISOString().split('T')[0];// Formato YYYY-MM-DD
+    
     const { error } = await supabase
       .from('tarefas')
       .update({ status: 'concluido', data_conclusao: dataConclusao })
@@ -223,7 +226,7 @@ export default function Perfil() {
           <Ionicons name="person-outline" size={24} color={colors.white} /> Perfil
         </Text>
       </TouchableOpacity>
-
+    
       <Modal transparent visible={menuVisible} animationType="fade">
         <TouchableOpacity
           style={styles.modalOverlay}
@@ -231,6 +234,11 @@ export default function Perfil() {
           activeOpacity={1}
         >
           <View style={styles.dropdownMenu}>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles. menuDadosUsuario}>Nome: {nomeUsuario}</Text>
+              <Text style={styles.menuDadosUsuario}>Email: {emailUsuario}</Text>
+              <View style={{height:1, backgroundColor:colors.grayStrong, marginVertical:8,}}></View>
+            </TouchableOpacity>
             <TouchableOpacity onPress={EncerrarSessao} style={styles.menuItem}>
               <Text style={styles.menuTexto}>Encerrar Sessão</Text>
             </TouchableOpacity>
@@ -340,6 +348,7 @@ const styles = StyleSheet.create({
   },
   menuItem: { paddingVertical: 10 },
   menuTexto: { fontSize: 16, color: colors.blue },
+   menuDadosUsuario: { fontSize: 10, color: colors.blue,fontWeight:'bold' },
   tarefasContainer: { marginTop: 20, width: '100%', paddingHorizontal: 10 },
   tarefasTitulo: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
   tarefaItem: {

@@ -30,12 +30,20 @@ export default function Cadastrar(){
       }
     }
   });
-
+  if(name.length === 0 || email.length === 0 || password.length === 0){
+    setLoading(false);
+    Alert.alert('Erro ao cadastrar', "Preencha todos os campos.")
+    return;
+  }
+else if (password.length >0 && password.length <6){
+    setLoading(false);
+    Alert.alert('Erro ao cadastrar', "A senha deve ter no mínimo 6 caracteres.");
+    return;
+  }
   
-
   if (error) {
     setLoading(false);
-    Alert.alert('Erro ao cadastrar', error.message);
+    Alert.alert('Erro ao cadastrar', "Verifique suas credenciais e tente novamente.");
     return;
   }
 
@@ -55,28 +63,28 @@ export default function Cadastrar(){
        <Pressable onPress={() => router.back()}>
       <Ionicons 
        name="arrow-back" 
-       size={24} 
+       size={30} 
       color={colors.white} 
-       style={{marginLeft: 14, marginTop: 44}} 
+       style={{marginLeft: 14, marginTop: 20, paddingBottom:15}} 
   />
 </Pressable>
 
            <View style={styles.header}>
-            <Text style = {styles.logo}>App<Text style = {{color:colors.white}}>Organize</Text></Text>
+            <Text style = {styles.logo}>App<Text style = {{color:colors.white}}> organize</Text></Text>
             <Text style = {styles.slogan}>Crie sua conta</Text>
         </View>
         
         <View style = {styles.form}>
                    
              <Text style={styles.label}>Nome completo:</Text>
-             <TextInput placeholder='Digite seu nome completo'
+             <TextInput placeholder='Digite seu nome completo' placeholderTextColor={colors.grayStrong}
               style = {styles.input}
                 value={name}
                 onChangeText={setName}
              ></TextInput>
 
              <Text style={styles.label}>email:</Text>
-             <TextInput placeholder='Digite seu e-mail'
+             <TextInput placeholder='Digite seu e-mail' placeholderTextColor={colors.grayStrong}
              style = {styles.input}
              value={email}
              onChangeText={setEmail}
@@ -86,7 +94,7 @@ export default function Cadastrar(){
 
 
              <Text style ={styles.label}>senha:</Text>
-             <TextInput placeholder='Digite sua senha' 
+             <TextInput placeholder='Digite sua senha' placeholderTextColor={colors.grayStrong}
              style = {styles.input}
              secureTextEntry={true}
              value={password}
@@ -159,6 +167,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         marginBottom: 20,
         padding : 10,
+        color: colors.black,
+        fontSize: 18,
     },
     button: {
         backgroundColor: colors.green,
