@@ -1,4 +1,4 @@
-# organizarApp
+# App-organize
 
 Aplicativo para organizar tarefas, compromissos e informações pessoais de forma simples e eficiente.
 
@@ -19,22 +19,27 @@ Aplicativo para organizar tarefas, compromissos e informações pessoais de form
 O projeto é dividido em pastas e arquivos que organizam suas funcionalidades principais:
 
 ```
-organizarApp/
-├── src/
-│   ├── components/        # Componentes reutilizáveis da interface
-│   ├── pages/             # Páginas do aplicativo
-│   ├── services/          # Serviços para comunicação com a API e Supabase
-│   ├── App.js             # Componente principal do aplicativo
-│   └── index.js          # Ponto de entrada do aplicativo
-├── .env                   # Variáveis de ambiente
-├── .gitignore             # Ignorar arquivos e pastas no Git
-├── package.json           # Dependências e scripts do projeto
-└── README.md              # Documentação do projeto
+
+
+├── assets/              # Recursos estáticos (imagens, ícones, fontes, etc.)
+├── src/                 # Código-fonte principal (componentes, telas e lógica)
+├── .gitignore
+├── app.json             # Configurações do Expo
+├── babel.config.js      # Configuração do Babel
+├── eas.json             # Configuração do EAS (build/deploy)
+├── package.json         # Dependências e scripts
+├── package-lock.json
+└── tsconfig.json        # Configuração do TypeScript (se aplicável)
+
 ```
 
 ## Figma do Projeto
 
 [Figma do Projeto](https://www.figma.com/design/K8x40hmtEorNVGOAwWMvfe/organizadorApp?m=auto&t=tq4uUhrHgO8Hmfmc-1)
+
+## download do App
+
+[Projeto 13](https://portfolio-react-omega-rust.vercel.app/) 
 
 ## Instalação
 
