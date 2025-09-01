@@ -1,12 +1,6 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Modal,
-  Alert,
-  StyleSheet,
-  FlatList, Linking,
+import {View, Text, TextInput, 
+  TouchableOpacity,  Modal, Alert, StyleSheet,
+  FlatList, Linking, Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
 import { supabase } from '../../lib/supabase';
@@ -15,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../../../constants/Colors';
 
+const { height } = Dimensions.get("window");
 
 export async function SalvarTarefa(
   nome: string,
@@ -369,9 +364,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
   },
-  botaoAdd: {
-    position: 'absolute',
-    bottom: 15,
+    botaoAdd: {
+    position: "absolute",
+    bottom: height < 700 ? 70 : 80,  
     right: 20,
     backgroundColor: colors.green,
     padding: 15,
