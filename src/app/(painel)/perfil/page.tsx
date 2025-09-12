@@ -239,7 +239,7 @@ export default function Perfil() {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                Linking.openURL('https://portfolio-react-omega-rust.vercel.app/');
+                Linking.openURL('https://portfolio-react-iota-red.vercel.app/');
                 setMenuVisible(false);
               }}
               style={styles.menuItem}

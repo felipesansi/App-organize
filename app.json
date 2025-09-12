@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "organizarApp",
+    "name": "apporganize",
     "slug": "organizarApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/Icon.png",
     "scheme": "organizarapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
 
     "splash": {
@@ -17,7 +17,7 @@
 
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ffreita_s.organizarApp", 
+      "bundleIdentifier": "com.ffreita_s.organizarApp",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
