@@ -1,5 +1,6 @@
-import {View, Text, TextInput, 
-  TouchableOpacity,  Modal, Alert, StyleSheet,
+import {
+  View, Text, TextInput,
+  TouchableOpacity, Modal, Alert,
   FlatList, Linking, Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
@@ -8,6 +9,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../../../constants/Colors';
+import { estilosGlobais as styles } from '../../../styles/globalStyles';
 
 const { height } = Dimensions.get("window");
 
@@ -40,7 +42,7 @@ export async function SalvarTarefa(
 }
 
 export default function Perfil() {
-  const { setUser, user } = useAuth(); 
+  const { setUser, user } = useAuth();
   const [menuVisible, setMenuVisible] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
   const [editando, setEditando] = useState(false);
@@ -141,8 +143,8 @@ export default function Perfil() {
   }
 
   async function marcarComoConcluida(id: number) {
-    const dataConclusao = new Date().toISOString().split('T')[0];// Formato YYYY-MM-DD
-    
+    const dataConclusao = new Date().toISOString().split('T')[0];
+
     const { error } = await supabase
       .from('tarefas')
       .update({ status: 'concluido', data_conclusao: dataConclusao })
@@ -157,7 +159,7 @@ export default function Perfil() {
 
   function renderTarefa({ item }: { item: any }) {
     return (
-      <View style={styles.tarefaItem}>
+      <View style={styles.itemTarefa}>
         <View
           style={{
             flexDirection: 'row',
@@ -167,8 +169,8 @@ export default function Perfil() {
         >
           <Text
             style={[
-              styles.tarefaNome,
-              item.status === 'concluido' ? { textDecorationLine: 'line-through', color: '#999' } : {},
+              styles.nomeTarefa,
+              item.status === 'concluido' ? { textDecorationLine: 'line-through', color: colors.grayStrong } : {},
             ]}
           >
             {item.nome}
@@ -186,23 +188,23 @@ export default function Perfil() {
         {item.descricao ? (
           <Text
             style={[
-              styles.tarefaDescricao,
-              item.status === 'concluido' ? { textDecorationLine: 'line-through', color: '#999' } : {},
+              styles.descricaoTarefa,
+              item.status === 'concluido' ? { textDecorationLine: 'line-through', color: colors.grayStrong } : {},
             ]}
           >
             {item.descricao}
           </Text>
         ) : null}
-        <Text style={styles.tarefaData}>
+        <Text style={styles.dataTarefa}>
           Data de início: {item.data_inicio ? item.data_inicio : 'Não definida'}
         </Text>
         {item.data_conclusao && (
-          <Text style={styles.tarefaData}>
+          <Text style={styles.dataTarefa}>
             Data de conclusão: {item.data_conclusao}
           </Text>
         )}
 
-        <View style={styles.actionsRow}>
+        <View style={styles.linhaAcoes}>
           <TouchableOpacity onPress={() => editarTarefa(item)}>
             <Ionicons name="create-outline" size={20} color={colors.blue} />
           </TouchableOpacity>
@@ -215,44 +217,44 @@ export default function Perfil() {
   }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => setMenuVisible(true)} style={styles.dropdownButton}>
-        <Text style={styles.dropdownBotaoTexto}>
+    <View style={styles.containerComPadding}>
+      <TouchableOpacity onPress={() => setMenuVisible(true)} style={styles.botaoDropdown}>
+        <Text style={styles.textoBotaoDropdown}>
           <Ionicons name="person-outline" size={24} color={colors.white} /> Perfil
         </Text>
       </TouchableOpacity>
-    
+
       <Modal transparent visible={menuVisible} animationType="fade">
         <TouchableOpacity
-          style={styles.modalOverlay}
+          style={styles.sobreposicaoModal}
           onPress={() => setMenuVisible(false)}
           activeOpacity={1}
         >
-          <View style={styles.dropdownMenu}>
-            <TouchableOpacity style={styles.menuItem}>
-              <Text style={styles. menuDadosUsuario}>Nome: {nomeUsuario}</Text>
-              <Text style={styles.menuDadosUsuario}>Email: {emailUsuario}</Text>
-              <View style={{height:1, backgroundColor:colors.grayStrong, marginVertical:8,}}></View>
+          <View style={styles.menuDropdown}>
+            <TouchableOpacity style={styles.itemMenu}>
+              <Text style={styles.dadosUsuarioMenu}>Nome: {nomeUsuario}</Text>
+              <Text style={styles.dadosUsuarioMenu}>Email: {emailUsuario}</Text>
+              <View style={{ height: 1, backgroundColor: colors.grayStrong, marginVertical: 8, }}></View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={EncerrarSessao} style={styles.menuItem}>
-              <Text style={styles.menuTexto}>Encerrar Sessão</Text>
+            <TouchableOpacity onPress={EncerrarSessao} style={styles.itemMenu}>
+              <Text style={styles.textoMenu}>Encerrar Sessão</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 Linking.openURL('https://portfolio-react-iota-red.vercel.app/');
                 setMenuVisible(false);
               }}
-              style={styles.menuItem}
+              style={styles.itemMenu}
             >
-            
-              <Text style={styles.menuTexto}>Visitar site do dev</Text>
+
+              <Text style={styles.textoMenu}>Visitar site do dev</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </Modal>
 
-      <View style={styles.tarefasContainer}>
-        <Text style={styles.tarefasTitulo}>Minhas Tarefas</Text>
+      <View style={styles.containerTarefas}>
+        <Text style={styles.tituloTarefas}>Minhas Tarefas</Text>
         {loading ? (
           <Text>Carregando...</Text>
         ) : tarefas.length === 0 ? (
@@ -274,27 +276,34 @@ export default function Perfil() {
           <Ionicons name="add-circle-outline" size={30} color={colors.white} />
         </TouchableOpacity>
       </View>
+      <View style={styles.botaoAddListacompra}>
+        <TouchableOpacity
+          onPress={() => router.push('/(painel)/perfil/listacompra')}
+        >
+          <Ionicons name="add-circle-outline" size={30} color={colors.white} />
+        </TouchableOpacity>
+      </View>
 
       <Modal visible={formVisible} animationType="slide" transparent>
-        <View style={styles.formContainer}>
-          <View style={styles.formBox}>
-            <Text style={styles.label}>Nome da Tarefa *</Text>
+        <View style={styles.containerFormulario}>
+          <View style={styles.caixaFormulario}>
+            <Text style={styles.rotuloNegrito}>Nome da Tarefa *</Text>
             <TextInput
-              style={styles.input}
+              style={styles.inputSimples}
               placeholder="Digite o nome"
               value={nome}
               onChangeText={setNome}
             />
 
-            <Text style={styles.label}>Descrição</Text>
+            <Text style={styles.rotuloNegrito}>Descrição</Text>
             <TextInput
-              style={styles.input}
+              style={styles.inputSimples}
               placeholder="Digite a descrição"
               value={descricao}
               onChangeText={setDescricao}
             />
 
-            <View style={styles.formActions}>
+            <View style={styles.acoesFormulario}>
               <TouchableOpacity onPress={() => setFormVisible(false)}>
                 <Text style={styles.cancelar}>Cancelar</Text>
               </TouchableOpacity>
@@ -309,104 +318,3 @@ export default function Perfil() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-     paddingTop: 60, 
-     alignItems: 'flex-end',
-     paddingRight: 20,
-      backgroundColor: colors.gray
-
-   },
-  dropdownButton: {
-    backgroundColor: colors.blue,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 6,
-  },
-  dropdownBotaoTexto: { color: colors.white, fontSize: 16 },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    paddingTop: 60,
-    paddingRight: 20,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-  },
-  dropdownMenu: {
-    backgroundColor: colors.white,
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    elevation: 5,
-  },
-  menuItem: { paddingVertical: 10 },
-  menuTexto: { fontSize: 16, color: colors.blue },
-   menuDadosUsuario: { fontSize: 10, color: colors.blue,fontWeight:'bold' },
-  tarefasContainer: { marginTop: 20, width: '100%', paddingHorizontal: 10 },
-  tarefasTitulo: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
-  tarefaItem: {
-    backgroundColor: '#f5f5f5',
-    padding: 15,
-    marginBottom: 10,
-    borderRadius: 8,
-  },
-  tarefaNome: { fontSize: 16, fontWeight: 'bold' },
-  tarefaDescricao: { fontSize: 14, color: '#555', marginTop: 5 },
-  tarefaData: {
-    fontSize: 12,
-    color: '#888',
-    marginTop: 5,
-    fontStyle: 'italic',
-  },
-  actionsRow: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-    botaoAdd: {
-    position: "absolute",
-    bottom: height < 700 ? 70 : 80,  
-    right: 20,
-    backgroundColor: colors.green,
-    padding: 15,
-    borderRadius: 50,
-    elevation: 5,
-  },
-  formContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    paddingHorizontal: 20,
-  },
-  formBox: {
-    backgroundColor: colors.white,
-    borderRadius: 10,
-    padding: 20,
-  },
-  label: { fontWeight: 'bold', marginTop: 10 },
-  input: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    paddingVertical: 5,
-    marginBottom: 10,
-  },
-  formActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 15,
-  },
-  cancelar: { color: colors.blue, fontWeight: 'bold' },
-  salvar: { color: colors.green, fontWeight: 'bold' },
-  botaoConcluir: {
-    backgroundColor: colors.green,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-  },
-  textoBotaoConcluir: {
-    color: colors.white,
-    fontWeight: 'bold',
-  },
-  
-});
