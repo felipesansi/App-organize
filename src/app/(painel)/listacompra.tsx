@@ -1,11 +1,10 @@
-import { View, Text, Alert, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Pressable, Modal, FlatList } from 'react-native';
+import { View, Text, Alert, TextInput, TouchableOpacity, ScrollView, ActivityIndicator, Modal, FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
-import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuth } from '../../../contexts/AuthContext';
-import { supabase } from '../../lib/supabase';
-import { estilosGlobais as styles } from '../../../styles/globalStyles';
-import colors from '../../../constants/Colors';
+import { useAuth } from '../../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
+import { estilosGlobais as styles } from '../../styles/globalStyles';
+import colors from '../../constants/Colors';
 
 async function SalvarListaCompra(
     nome: string,
@@ -127,18 +126,6 @@ export default function Listacompra() {
         <View style={styles.container}>
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                 <View style={styles.cabecalho}>
-                    <Pressable
-                        onPress={() => router.back()}
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            marginBottom: 10,
-                            alignSelf: 'flex-start'
-                        }}
-                    >
-                        <Ionicons name="arrow-back" size={24} color={colors.black} />
-                        <Text style={{ fontSize: 18, marginLeft: 10, color: colors.black, fontWeight: 'bold' }}>Voltar</Text>
-                    </Pressable>
                     <Text style={styles.titulo}>🛒 Lista de Compras</Text>
                     <Text style={styles.subtitulo}>Organize suas compras de forma prática</Text>
                 </View>

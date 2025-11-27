@@ -4,12 +4,12 @@ import {
   FlatList, Linking, Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
-import { supabase } from '../../lib/supabase';
-import { useAuth } from '../../../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../../contexts/AuthContext';
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import colors from '../../../constants/Colors';
-import { estilosGlobais as styles } from '../../../styles/globalStyles';
+import colors from '../../constants/Colors';
+import { estilosGlobais as styles } from '../../styles/globalStyles';
 
 const { height } = Dimensions.get("window");
 
@@ -157,6 +157,7 @@ export default function Perfil() {
     }
   }
 
+
   function renderTarefa({ item }: { item: any }) {
     return (
       <View style={styles.itemTarefa}>
@@ -272,13 +273,6 @@ export default function Perfil() {
             setDescricao('');
             setFormVisible(true);
           }}
-        >
-          <Ionicons name="add-circle-outline" size={30} color={colors.white} />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.botaoAddListacompra}>
-        <TouchableOpacity
-          onPress={() => router.push('/(painel)/perfil/listacompra')}
         >
           <Ionicons name="add-circle-outline" size={30} color={colors.white} />
         </TouchableOpacity>

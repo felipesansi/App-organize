@@ -11,14 +11,14 @@ export default function IndexScreen() {
 
   useEffect(() => {
     const delayAndVerify = async () => {
-      
+
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       const { data: { session } } = await supabase.auth.getSession();
 
       if (session?.user) {
         setUser(session.user);
-        router.replace('/(painel)/perfil/page');
+        router.replace('/(painel)/tarefas' as any);
       } else {
         setUser(null);
         router.replace('/(auth)/login/page');
@@ -30,7 +30,7 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-   <Text style = {styles.logo}>App<Text style = {{color:colors.white}}> organize</Text></Text>
+      <Text style={styles.logo}>App<Text style={{ color: colors.white }}> organize</Text></Text>
 
     </View>
   );
