@@ -47,7 +47,7 @@ export default function Login() {
 
     if (data.user) {
       setUser(data.user);
-      router.replace('/(painel)/perfil/page');
+      router.replace('/(painel)/tarefas' as any);
       carregarTarefas();
       setLoading(false);
     }

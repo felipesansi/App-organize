@@ -1,17 +1,14 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import colors from '../../constants/Colors';
-import Tarefas from './tarefas';
-import Listacompra from './listacompra';
 
-const Tab = createBottomTabNavigator();
 
 export default function PainelLayout() {
     const insets = useSafeAreaInsets();
 
     return (
-        <Tab.Navigator
+        <Tabs
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: colors.blue,
@@ -30,9 +27,8 @@ export default function PainelLayout() {
                 },
             }}
         >
-            <Tab.Screen
+            <Tabs.Screen
                 name="tarefas"
-                component={Tarefas}
                 options={{
                     tabBarLabel: 'Tarefas',
                     tabBarIcon: ({ color, size }) => (
@@ -40,9 +36,8 @@ export default function PainelLayout() {
                     ),
                 }}
             />
-            <Tab.Screen
+            <Tabs.Screen
                 name="listacompra"
-                component={Listacompra}
                 options={{
                     tabBarLabel: 'Lista de Compras',
                     tabBarIcon: ({ color, size }) => (
@@ -50,6 +45,6 @@ export default function PainelLayout() {
                     ),
                 }}
             />
-        </Tab.Navigator>
+        </Tabs>
     );
 }

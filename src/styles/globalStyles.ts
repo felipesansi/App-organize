@@ -27,7 +27,7 @@ export const estilosGlobais = StyleSheet.create({
     // ========================================
     cabecalho: {
         paddingHorizontal: 27,
-        paddingTop: 40,
+        paddingTop: 60,
         paddingBottom: 15,
         backgroundColor: colors.white,
         borderBottomLeftRadius: 30,
