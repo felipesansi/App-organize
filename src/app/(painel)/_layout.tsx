@@ -45,6 +45,15 @@ export default function PainelLayout() {
                     ),
                 }}
             />
+            <Tabs.Screen
+                name="senha"
+                options={{
+                    tabBarLabel: 'Senha',
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="lock-closed-outline" size={size = 34} color={color === colors.blue ? colors.green : color} />
+                    ),
+                }}
+            />
         </Tabs>
     );
 }
