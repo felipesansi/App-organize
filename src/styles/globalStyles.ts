@@ -295,7 +295,7 @@ export const estilosGlobais = StyleSheet.create({
         borderRadius: 8,
     },
     cartaoConcluido: {
-        backgroundColor: colors.green,
+        backgroundColor: colors.gray,
         borderWidth: 1,
         borderColor: colors.green,
     },
