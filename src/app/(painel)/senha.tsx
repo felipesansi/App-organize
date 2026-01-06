@@ -233,40 +233,7 @@ export default function Senha() {
 
     return (
         <View style={styles.containerComPadding}>
-            <TouchableOpacity onPress={() => setMenuVisible(true)} style={styles.botaoDropdown}>
-                <Text style={styles.textoBotaoDropdown}>
-                    <Ionicons name="person-outline" size={24} color={colors.white} /> Perfil
-                </Text>
-            </TouchableOpacity>
-
-            <Modal transparent visible={menuVisible} animationType="fade">
-                <TouchableOpacity
-                    style={styles.sobreposicaoModal}
-                    onPress={() => setMenuVisible(false)}
-                    activeOpacity={1}
-                >
-                    <View style={styles.menuDropdown}>
-                        <TouchableOpacity style={styles.itemMenu}>
-                            <Text style={styles.dadosUsuarioMenu}>Nome: {nomeUsuario}</Text>
-                            <Text style={styles.dadosUsuarioMenu}>Email: {emailUsuario}</Text>
-                            <View style={{ height: 1, backgroundColor: colors.grayStrong, marginVertical: 8, }}></View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={EncerrarSessao} style={styles.itemMenu}>
-                            <Text style={styles.textoMenu}>Encerrar Sessão</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => {
-                                Linking.openURL('https://portfolio-react-iota-red.vercel.app/');
-                                setMenuVisible(false);
-                            }}
-                            style={styles.itemMenu}
-                        >
-                            <Text style={styles.textoMenu}>Visitar site do dev</Text>
-                        </TouchableOpacity>
-                    </View>
-                </TouchableOpacity>
-            </Modal>
-
+           
             <View style={styles.containerTarefas}>
                 <Text style={styles.tituloTarefas}>Minhas Senhas</Text>
                 {loading ? (
