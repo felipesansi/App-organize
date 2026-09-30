@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "apporganize",
+    "slug": "organizarApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "organizarapp",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/Splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#16233A"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ffreitas.organizarapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+       "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#16233A"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.ffreita_s.organizarApp"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3d4f0059-daae-4689-b897-451f7616ea50"
+      }
+    }
+  }
+}
