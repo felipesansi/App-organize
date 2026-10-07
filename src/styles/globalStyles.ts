@@ -1,407 +1,391 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from '../constants/Colors';
 
-const { height } = Dimensions.get("window");
-
 export const estilosGlobais = StyleSheet.create({
-    // ========================================
-    // CONTAINERS GERAIS
-    // ========================================
-    container: {
-        flex: 1,
-        backgroundColor: colors.gray,
-    },
-    containerComPadding: {
-        flex: 1,
-        paddingTop: 60,
-        alignItems: 'flex-end',
-        paddingRight: 20,
-        backgroundColor: colors.gray,
-    },
-    scrollView: {
-        flex: 1,
-    },
+  containerSplash: {
+   flex: 1,
+   backgroundColor: colors.Fundo,
+   justifyContent: 'center',
+    alignItems: 'center',
 
-    // ========================================
-    // ESTILOS DO CABEÇALHO
-    // ========================================
-    cabecalho: {
-        paddingHorizontal: 27,
-        paddingTop: 60,
-        paddingBottom: 15,
-        backgroundColor: colors.white,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        shadowColor: colors.black,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 5,
-    },
-    titulo: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        color: colors.blue,
-        marginBottom: 5,
-    },
-    subtitulo: {
-        fontSize: 14,
-        color: colors.grayStrong,
-    },
 
-    // ========================================
-    // ESTILOS DO DROPDOWN / MENU
-    // ========================================
-    botaoDropdown: {
-        backgroundColor: colors.blue,
-        paddingVertical: 10,
-        paddingHorizontal: 15,
-        borderRadius: 6,
-    },
-    textoBotaoDropdown: {
-        color: colors.white,
-        fontSize: 16,
-    },
-    sobreposicaoModal: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-end',
-        paddingTop: 60,
-        paddingRight: 20,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-    menuDropdown: {
-        backgroundColor: colors.white,
-        borderRadius: 8,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        elevation: 5,
-    },
-    itemMenu: {
-        paddingVertical: 10,
-    },
-    textoMenu: {
-        fontSize: 16,
-        color: colors.blue,
-    },
-    dadosUsuarioMenu: {
-        fontSize: 10,
-        color: colors.blue,
-        fontWeight: 'bold',
-    },
+  },
+  tituloSplash: {
+    fontFamily: 'Inter_700Bold',
+    fontSize: 24,
+    color: colors.Texto,
+    textAlign: 'center',
+    marginTop: 24,
+    
+  },
+  subtituloSplash: {
+    fontSize: 16,
+    color: colors.TextosSecundarios,
+    textAlign: 'center',
+    marginTop: 12,
+  },
+  botaoSplash: {
+    backgroundColor: colors.Marca,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 24,
+  },
+  textoBotaoSplash: {
+    color: colors.white,
+    fontWeight: '700',
+  },
 
-    // ========================================
-    // ESTILOS DE FORMULÁRIO
-    // ========================================
-    cartaoFormulario: {
-        backgroundColor: colors.white,
-        margin: 20,
-        padding: 20,
-        borderRadius: 20,
-        shadowColor: colors.blue,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.15,
-        shadowRadius: 12,
-        elevation: 6,
-    },
-    tituloFormulario: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: colors.blue,
-        marginBottom: 20,
-    },
-    containerFormulario: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        paddingHorizontal: 20,
-    },
-    caixaFormulario: {
-        backgroundColor: colors.white,
-        borderRadius: 10,
-        padding: 20,
-    },
-    grupoInput: {
-        marginBottom: 16,
-    },
-    rotulo: {
-        fontSize: 14,
-        fontWeight: '600',
-        color: colors.grayStrong,
-        marginBottom: 8,
-    },
-    rotuloNegrito: {
-        fontWeight: 'bold',
-        marginTop: 10,
-    },
-    input: {
-        backgroundColor: colors.gray,
-        borderRadius: 12,
-        padding: 14,
-        fontSize: 16,
-        color: colors.blue,
-        borderWidth: 2,
-        borderColor: 'transparent',
-    },
-    inputSimples: {
-        borderBottomWidth: 1,
-        borderBottomColor: colors.gray,
-        paddingVertical: 5,
-        marginBottom: 10,
-    },
-    acoesFormulario: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 15,
-    },
-
-    // ========================================
-    // BOTÕES
-    // ========================================
-    botaoAdicionar: {
-        backgroundColor: colors.blue,
-        borderRadius: 12,
-        padding: 16,
-        alignItems: 'center',
-        marginTop: 8,
-        shadowColor: colors.blue,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
-        elevation: 6,
-    },
-    textoBotaoAdicionar: {
-        color: colors.white,
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    botaoAdd: {
-        position: "absolute",
-        bottom: height < 700 ? 70 : 80,
-        right: 20,
-        backgroundColor: colors.green,
-        padding: 15,
-        borderRadius: 50,
-        elevation: 5,
-    },
-    botaoAddListacompra: {
-        position: "absolute",
-        bottom: height < 700 ? 70 : 80,
-        right: 89,
-        backgroundColor: colors.green,
-        padding: 15,
-        borderRadius: 50,
-        elevation: 5,
-    },
-    botaoConcluir: {
-        backgroundColor: colors.green,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderRadius: 5,
-    },
-    textoBotaoConcluir: {
-        color: colors.white,
-        fontWeight: 'bold',
-    },
-    cancelar: {
-        color: colors.blue,
-        fontWeight: 'bold',
-    },
-    salvar: {
-        color: colors.green,
-        fontWeight: 'bold',
-    },
-    botaoAcao: {
-        flex: 1,
-        padding: 12,
-        borderRadius: 10,
-        alignItems: 'center',
-    },
-    botaoConcluido: {
-        backgroundColor: colors.green,
-    },
-    textoBotaoConcluido: {
-        color: colors.white,
-        fontWeight: '600',
-        fontSize: 14,
-    },
-    botaoExcluir: {
-        backgroundColor: colors.white,
-        borderWidth: 1.5,
-        borderColor: colors.red,
-    },
-    textoBotaoExcluir: {
-        color: colors.red,
-        fontWeight: '600',
-        fontSize: 14,
-    },
-
-    // ========================================
-    // ESTILOS DE CARREGAMENTO
-    // ========================================
-    containerCarregamento: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 40,
-    },
-    textoCarregamento: {
-        marginTop: 10,
-        fontSize: 16,
-        color: colors.grayStrong,
-    },
-
-    // ========================================
-    // ESTILOS DE SEÇÃO E CONTEÚDO
-    // ========================================
-    secao: {
-        marginHorizontal: 20,
-        marginBottom: 20,
-    },
-    tituloSecao: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: colors.blue,
-        marginBottom: 12,
-    },
-    containerTarefas: {
-        marginTop: 20,
-        width: '100%',
-        paddingHorizontal: 10,
-    },
-    tituloTarefas: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-
-    // ========================================
-    // CARTÕES DE ITEM (Tarefas / Lista de Compras)
-    // ========================================
-    cartaoItem: {
-        backgroundColor: colors.white,
-        padding: 16,
-        borderRadius: 16,
-        marginBottom: 12,
-        shadowColor: colors.black,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.08,
-        shadowRadius: 8,
-        elevation: 3,
-    },
-    itemTarefa: {
-        backgroundColor: colors.gray,
-        padding: 15,
-        marginBottom: 10,
-        borderRadius: 8,
-    },
-    cartaoConcluido: {
-        backgroundColor: colors.gray,
-        borderWidth: 1,
-        borderColor: colors.green,
-    },
-    cabecalhoItem: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        marginBottom: 12,
-    },
-    infoItem: {
-        flex: 1,
-    },
-    nomeItem: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: colors.blue,
-        marginBottom: 4,
-    },
-    nomeTarefa: {
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    quantidadeItem: {
-        fontSize: 14,
-        color: colors.grayStrong,
-        marginBottom: 4,
-    },
-    observacoesItem: {
-        fontSize: 14,
-        color: colors.grayStrong,
-        marginBottom: 4,
-    },
-    descricaoTarefa: {
-        fontSize: 14,
-        color: colors.grayStrong,
-        marginTop: 5,
-    },
-    dataItem: {
-        fontSize: 12,
-        color: colors.grayStrong,
-    },
-    dataTarefa: {
-        fontSize: 12,
-        color: colors.grayStrong,
-        marginTop: 5,
-        fontStyle: 'italic',
-    },
-    textoConcluido: {
-        textDecorationLine: 'line-through',
-        color: colors.grayStrong,
-    },
-    acoesItem: {
-        flexDirection: 'row',
-        gap: 8,
-    },
-    linhaAcoes: {
-        flexDirection: 'row',
-        marginTop: 10,
-    },
-
-    // ========================================
-    // EMBLEMAS
-    // ========================================
-    emblemaItem: {
-        backgroundColor: colors.gray,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 20,
-    },
-    textoEmblema: {
-        fontSize: 12,
-        fontWeight: '600',
-        color: colors.orange,
-    },
-    emblemaConcluido: {
-        backgroundColor: colors.gray,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 20,
-    },
-    textoEmblemaConcluido: {
-        fontSize: 12,
-        fontWeight: '600',
-        color: colors.green,
-    },
-
-    // ========================================
-    // ESTADOS VAZIOS
-    // ========================================
-    estadoVazio: {
-        backgroundColor: colors.white,
-        padding: 30,
-        borderRadius: 16,
-        alignItems: 'center',
-        borderWidth: 2,
-        borderColor: colors.gray,
-        borderStyle: 'dashed',
-    },
-    textoVazio: {
-        fontSize: 16,
-        color: colors.grayStrong,
-        fontWeight: '600',
-    },
-    subtextoVazio: {
-        fontSize: 14,
-        color: colors.grayStrong,
-        marginTop: 4,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: colors.Fundo,
+  },
+  containerComPadding: {
+    flex: 1,
+    paddingTop: 137,
+    paddingHorizontal: 26,
+    backgroundColor: colors.FundoSuave,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  logo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.Marca,
+  },
+  textoBold: {
+    fontWeight: 'bold',
+    color: colors.Texto,
+  },
+  texto: {
+    color: colors.Texto,
+  },
+  botao: {
+    backgroundColor: colors.Marca,
+    borderRadius: 8,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  textoBotao: {
+    color: colors.white,
+    fontWeight: '700',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: colors.gray,
+    borderRadius: 10,
+    backgroundColor: colors.white,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    color: colors.Texto,
+    fontSize: 16,
+  },
+  itemTarefa: {
+    backgroundColor: colors.white,
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#E3E8EF',
+  },
+  nomeTarefa: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: colors.Texto,
+  },
+  descricaoTarefa: {
+    fontSize: 14,
+    color: colors.TextosSecundarios,
+    marginTop: 6,
+  },
+  dataTarefa: {
+    marginTop: 8,
+    fontSize: 12,
+    color: colors.grayStrong,
+  },
+  linhaAcoes: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 12,
+  },
+  acoesItem: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 12,
+    gap: 10,
+  },
+  botaoDropdown: {
+    alignSelf: 'flex-end',
+    marginBottom: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    backgroundColor: colors.Marca,
+  },
+  textoBotaoDropdown: {
+    color: colors.white,
+    fontWeight: '700',
+  },
+  sobreposicaoModal: {
+    flex: 1,
+    backgroundColor: 'rgba(15, 23, 42, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuDropdown: {
+    width: '80%',
+    backgroundColor: colors.white,
+    borderRadius: 16,
+    padding: 16,
+  },
+  itemMenu: {
+    paddingVertical: 8,
+  },
+  dadosUsuarioMenu: {
+    color: colors.Texto,
+    fontSize: 14,
+  },
+  textoMenu: {
+    color: colors.Texto,
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  containerTarefas: {
+    flex: 1,
+  },
+  tituloTarefas: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: colors.Texto,
+    marginBottom: 12,
+  },
+  botaoAdd: {
+    position: 'absolute',
+    right: 20,
+    bottom: 26,
+    borderRadius: 28,
+    backgroundColor: colors.Marca,
+    padding: 6,
+  },
+  containerFormulario: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 18,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  caixaFormulario: {
+    backgroundColor: colors.white,
+    borderRadius: 16,
+    padding: 18,
+  },
+  rotuloNegrito: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: colors.Texto,
+    marginBottom: 8,
+  },
+  inputSimples: {
+    borderWidth: 1,
+    borderColor: colors.gray,
+    backgroundColor: colors.Fundo,
+    borderRadius: 10,
+    padding: 12,
+    color: colors.Texto,
+    marginBottom: 14,
+  },
+  acoesFormulario: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 12,
+  },
+  cancelar: {
+    color: colors.grayStrong,
+    fontWeight: '700',
+    marginRight: 18,
+  },
+  salvar: {
+    color: colors.Marca,
+    fontWeight: '700',
+  },
+  emblemaConcluido: {
+    backgroundColor: '#D9F7E8',
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  emblemaItem: {
+    backgroundColor: '#EAF2FF',
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  textoEmblemaConcluido: {
+    color: '#1A7F5A',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  textoEmblema: {
+    color: '#3B82F6',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  botaoConcluir: {
+    backgroundColor: colors.Sucesso,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  textoBotaoConcluir: {
+    color: colors.white,
+    fontWeight: '700',
+  },
+  botaoAcao: {
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+  },
+  botaoConcluido: {
+    backgroundColor: '#E7F9EF',
+  },
+  botaoExcluir: {
+    backgroundColor: '#FDECEC',
+  },
+  textoBotaoConcluido: {
+    color: '#1A7F5A',
+    fontWeight: '700',
+    fontSize: 12,
+  },
+  textoBotaoExcluir: {
+    color: '#D92D20',
+    fontWeight: '700',
+    fontSize: 12,
+  },
+  cabecalho: {
+    marginBottom: 18,
+  },
+  titulo: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: colors.Texto,
+  },
+  subtitulo: {
+    marginTop: 6,
+    color: colors.TextosSecundarios,
+    fontSize: 14,
+  },
+  cartaoFormulario: {
+    backgroundColor: colors.white,
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  tituloFormulario: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: colors.Texto,
+    marginBottom: 12,
+  },
+  grupoInput: {
+    marginBottom: 14,
+  },
+  rotulo: {
+    color: colors.Texto,
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  botaoAdicionar: {
+    backgroundColor: colors.Marca,
+    borderRadius: 12,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  textoBotaoAdicionar: {
+    color: colors.white,
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  containerCarregamento: {
+    alignItems: 'center',
+    paddingVertical: 16,
+  },
+  textoCarregamento: {
+    marginTop: 8,
+    color: colors.grayStrong,
+    fontSize: 14,
+  },
+  secao: {
+    marginBottom: 18,
+  },
+  tituloSecao: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: colors.Texto,
+    marginBottom: 12,
+  },
+  estadoVazio: {
+    backgroundColor: colors.white,
+    borderRadius: 12,
+    padding: 20,
+    alignItems: 'center',
+  },
+  textoVazio: {
+    color: colors.Texto,
+    fontWeight: '700',
+  },
+  subtextoVazio: {
+    color: colors.grayStrong,
+    fontSize: 12,
+    marginTop: 6,
+  },
+  cartaoItem: {
+    backgroundColor: colors.white,
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#E8ECF2',
+  },
+  cabecalhoItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  infoItem: {
+    flex: 1,
+    marginRight: 8,
+  },
+  nomeItem: {
+    fontWeight: '700',
+    fontSize: 16,
+    color: colors.Texto,
+  },
+  observacoesItem: {
+    color: colors.grayStrong,
+    fontSize: 12,
+    marginTop: 6,
+  },
+  quantidadeItem: {
+    color: colors.grayStrong,
+    fontSize: 12,
+    marginTop: 4,
+  },
+  dataItem: {
+    color: colors.grayStrong,
+    fontSize: 12,
+    marginTop: 6,
+  },
+  cartaoConcluido: {
+    opacity: 0.85,
+  },
+  textoConcluido: {
+    textDecorationLine: 'line-through',
+  },
 });
+
+export default estilosGlobais;

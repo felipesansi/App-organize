@@ -10,7 +10,7 @@ export default function IndexScreen() {
   const { setUser } = useAuth();
 
   useEffect(() => {
-    const delayAndVerify = async () => {
+    const verificaoSessao = async () => {
 
       await new Promise(resolve => setTimeout(resolve, 2000));
 
@@ -21,16 +21,16 @@ export default function IndexScreen() {
         router.replace('/(painel)/tarefas' as any);
       } else {
         setUser(null);
-        router.replace('/(auth)/login/page');
+        router.replace('/(auth)/splash/page' as any);
       }
     };
 
-    delayAndVerify();
+    verificaoSessao();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>App<Text style={{ color: colors.white }}> organize</Text></Text>
+      <Text style={styles.logo}>App<Text style={{ color: colors.Texto }}> organize</Text></Text>
 
     </View>
   );
@@ -39,14 +39,14 @@ export default function IndexScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.blue,
+    backgroundColor: colors.Fundo,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   logo: {
     fontSize: 24,
-    color: colors.green,
+    color: colors.Marca,
     fontWeight: 'bold',
     textAlign: 'center',
   },

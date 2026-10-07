@@ -1,10 +1,11 @@
-import colors from '../../../constants/Colors';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Pressable, ScrollView, Alert } from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, Alert, Pressable } from 'react-native';
 import { router } from 'expo-router';
 import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
+import Input from '../../../components/input';
+import { estilosGlobais as styles } from '../../../styles/globalStyles';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -47,14 +48,50 @@ export default function Login() {
 
     if (data.user) {
       setUser(data.user);
-      router.replace('/(painel)/tarefas' as any);
+      router.replace('/(painel)/tarefas');
       carregarTarefas();
       setLoading(false);
     }
   }
 
   return (
+   <View style={styles.containerComPadding}>
+    <Text style={styles.logo}>App<Text style={styles.texto}> organize</Text></Text>
+    <Text style={[styles.textoBold, { marginTop: 24 }]}>Bem-vindo de volta.</Text>
+    <Text style={[styles.subtitulo, { marginTop: 8 }]}>Entre com sua conta para continuar.</Text>
+     
+    <View style={{ marginTop: 44 }}>
+       <Text style={styles.rotuloNegrito}>E-mail</Text>
+     <Input
+      placeholder="Digite seu e-mail"
+      value={email}
+      onChangeText={setEmail}
+    />
+    <Text style={styles.rotuloNegrito}>Senha</Text>
+    <Input
+      placeholder="Digite sua senha"
+      value={password}
+      onChangeText={setPassword}
+      secureTextEntry
+    />
+    </View>
+         <Pressable
+      style={[styles.botao, { marginTop: 24 }]}
+      onPress={Entrar}
+      disabled={loading}
+    >
+      <Text style={styles.textoBotao}>{loading ? 'Entrando...' : 'Entrar'}</Text>
+    </Pressable>
+     
+     <Pressable
+      style={{ marginTop: 12 }}
+      onPress={() => router.push('/(auth)/password/page')}
+    >
+      <Text style={[styles.texto, { textAlign: 'right' }]}>
+   <Text style={styles.textoBold}>Esqueci minha senha</Text>
+      </Text>
+    </Pressable>
+    </View>
    
   )
 }
-
