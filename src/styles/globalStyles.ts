@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import colors from '../constants/Colors';
 
+
 export const estilosGlobais = StyleSheet.create({
   containerSplash: {
    flex: 1,
@@ -44,7 +45,7 @@ export const estilosGlobais = StyleSheet.create({
     flex: 1,
     paddingTop: 137,
     paddingHorizontal: 26,
-    backgroundColor: colors.FundoSuave,
+    backgroundColor: colors.Fundo,
   },
   scrollView: {
     flex: 1,
@@ -81,6 +82,40 @@ export const estilosGlobais = StyleSheet.create({
     color: colors.Texto,
     fontSize: 16,
   },
+
+ subtexto: {
+    color: colors.TextosSecundarios,
+    alignSelf: 'center',
+    alignItems: 'center',
+    fontSize: 12, 
+
+  },
+  
+  botoesSociais: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  botaoSocial: {
+    flex: 1,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginTop: 8,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  textoBotaoSocial: {
+    color: colors.Texto,
+  
+  },
+
+
+
+
+
+
+
+
+
   itemTarefa: {
     backgroundColor: colors.white,
     borderRadius: 12,

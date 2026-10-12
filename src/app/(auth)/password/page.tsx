@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, Pressable } from 'react-native';
 import { router } from 'expo-router';
-import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import Input from '../../../components/input';
 import { estilosGlobais as styles } from '../../../styles/globalStyles';
+import { Ionicons } from '@expo/vector-icons';
+import colors from '../../../constants/Colors';
+
 
 export default function RecuperarSenha() {
     const [email, setEmail] = useState(''); 
@@ -27,8 +29,22 @@ export default function RecuperarSenha() {
     return (
         <View style={styles.containerComPadding}>
             <Text style={styles.logo}>App<Text style={styles.texto}> organize</Text></Text>
-            <Text style={[styles.textoBold, { marginTop: 24 }]}>Recuperar Senha</Text>
-            <Text style={{ marginTop: 12, color: '#666' }}>Digite seu e-mail para receber instruções de recuperação de senha.</Text>
+            <View style={{ marginTop: 24 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Pressable
+                        onPress={() => router.back()}
+                        style={{ padding: 4, marginRight: 12 }}
+                        accessibilityRole="button"
+                        accessibilityLabel="Voltar"
+                    >
+                        <Ionicons name="arrow-back" size={24} color={colors.Texto} />
+                    </Pressable>
+                    <Text style={styles.textoBold}>Recuperar Senha</Text>
+                </View>
+                <Text style={{ marginTop: 12, color: '#666' }}>
+                    Digite seu e-mail para receber instruções de recuperação de senha.
+                </Text>
+            </View>
 
             <View style={{ marginTop: 24 }}>
                 <Text style={styles.rotuloNegrito}>E-mail</Text>
@@ -36,6 +52,9 @@ export default function RecuperarSenha() {
                     placeholder="Digite seu e-mail"
                     value={email}
                     onChangeText={setEmail}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon={<Ionicons name="mail-outline" size={20} color="black" />}
                 />
             </View>
 

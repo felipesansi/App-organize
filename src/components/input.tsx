@@ -1,20 +1,37 @@
 
-import { View, StyleSheet, TextInput } from 'react-native';
-import colors from '../constants/Colors';
+import React from 'react';
+import { View, TextInput, StyleSheet, TextInputProps } from 'react-native';
 import { estilosGlobais as styles } from '../styles/globalStyles';
 
-const Input = ({ placeholder, value, onChangeText, secureTextEntry }: any) => {
+type InputProps = Omit<TextInputProps, 'style'> & {
+  icon?: React.ReactNode;
+};
+
+const Input = ({ icon, ...textInputProps }: InputProps) => {
   return (
-    <View style={styles.container}>
+    <View style={localStyles.inputContainer}>
+      {icon ? <View style={localStyles.iconWrapper}>{icon}</View> : null}
       <TextInput
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={secureTextEntry}
-        style={styles.input}
+        {...textInputProps}
+        style={[styles.input, icon ? localStyles.inputWithIcon : null]}
       />
     </View>
   );
 };
+
+const localStyles = StyleSheet.create({
+  inputContainer: {
+    position: 'relative',
+    justifyContent: 'center',
+  },
+  iconWrapper: {
+    position: 'absolute',
+    left: 12,
+    zIndex: 1,
+  },
+  inputWithIcon: {
+    paddingLeft: 42,
+  },
+});
 
 export default Input;

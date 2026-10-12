@@ -5,6 +5,8 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import Input from '../../../components/input';
 import { estilosGlobais as styles } from '../../../styles/globalStyles';
+import colors from '../../../constants/Colors';
+import { Ionicons, FontAwesome, MaterialIcons, Feather, AntDesign } from '@expo/vector-icons';
 
 
 export default function Login() {
@@ -57,26 +59,29 @@ export default function Login() {
   return (
    <View style={styles.containerComPadding}>
     <Text style={styles.logo}>App<Text style={styles.texto}> organize</Text></Text>
-    <Text style={[styles.textoBold, { marginTop: 24 }]}>Bem-vindo de volta.</Text>
+    <Text style={[styles.titulo, { marginTop: 24 }]}>Bem-vindo de volta.</Text>
     <Text style={[styles.subtitulo, { marginTop: 8 }]}>Entre com sua conta para continuar.</Text>
      
     <View style={{ marginTop: 44 }}>
+      
        <Text style={styles.rotuloNegrito}>E-mail</Text>
      <Input
       placeholder="Digite seu e-mail"
       value={email}
       onChangeText={setEmail}
-    />
+       icon={<Ionicons name="mail-outline" size={20} color="black" />} />
+
     <Text style={styles.rotuloNegrito}>Senha</Text>
     <Input
       placeholder="Digite sua senha"
       value={password}
       onChangeText={setPassword}
       secureTextEntry
-    />
+       icon={<Ionicons name="lock-closed" size={20} color="black" />} />
+
     </View>
          <Pressable
-      style={[styles.botao, { marginTop: 24 }]}
+      style={[styles.botao, { marginTop: 24 , paddingVertical: 12}]}
       onPress={Entrar}
       disabled={loading}
     >
@@ -88,10 +93,29 @@ export default function Login() {
       onPress={() => router.push('/(auth)/password/page')}
     >
       <Text style={[styles.texto, { textAlign: 'right' }]}>
-   <Text style={styles.textoBold}>Esqueci minha senha</Text>
+        <Text style={[styles.textoBold, { color: colors.Marca }]}>Esqueci minha senha</Text>
       </Text>
     </Pressable>
-    </View>
+    <Text style={styles.subtexto}>ou entre com</Text>
+      <View style={styles.botoesSociais}>
+        <Pressable style={styles.botaoSocial} onPress={() => Alert.alert('Login com Google')}>
+          <Text style={styles.textoBotaoSocial}>Google</Text>
+        </Pressable>
+       
+        <Pressable style={styles.botaoSocial} onPress={() => Alert.alert('Login com Apple')}>
+          <Text style={styles.textoBotaoSocial}>Apple</Text>
+        </Pressable>
+      </View>
+      <Pressable
+        style={{ marginTop: 'auto', paddingBottom: 24 }}
+        onPress={() => router.push('/(auth)/cadastro/page')}
+      >
+        <Text style={[styles.texto, { textAlign: 'center', color: colors.TextosSecundarios }]}>
+          Não tem uma conta?{' '}
+          <Text style={[styles.textoBold, { color: colors.Marca }]}>Cadastre-se</Text>
+        </Text>
+      </Pressable>
+  </View>
    
   )
 }
